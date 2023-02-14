@@ -41,4 +41,53 @@ edx <- readRDS(file.path(dir_data, "edx.rds"))
 
 final_holdout_test <- readRDS(file.path(dir_data, "final_holdout_test.rds"))
 
-# 
+# Exploring data ----
+
+# dimensions
+dim(edx)
+
+# columns' names
+colnames(edx)
+
+# how many zeros as rating
+sum(edx$rating == 0)
+
+# how many threes as rating
+sum(edx$rating == 3)
+
+# how many movies
+length(unique(edx$movieId))
+
+# how many users 
+length(unique(edx$userId))
+
+## how many of ratings for each genre ----
+
+# drama
+sum(str_detect(edx$genres,'Drama'))
+
+# comedy
+sum(str_detect(edx$genres,'Comedy'))
+
+# thriller
+sum(str_detect(edx$genres,'Thriller'))
+
+# romance
+sum(str_detect(edx$genres,'Romance'))
+
+## Movies with most ratings ----
+edx %>% 
+  # counts per title the # of ratings (observations)
+  count(title) %>% 
+  # orders by descendent number of ratings
+  arrange(desc(n)) %>% 
+  # gets the top 3
+  head(.,3)
+
+## Rating with most selection ----
+edx %>% 
+  # counts per grade of rating the # of times that it was selected
+  count(rating) %>% 
+  # orders by descendent number of selection
+  arrange(desc(n))
+
