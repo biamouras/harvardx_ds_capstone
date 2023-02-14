@@ -1,0 +1,33 @@
+---
+title: ''
+format: pdf
+---
+
+The report documents the analysis and presents the findings, along with supporting statistics and figures. 
+The report must be written in English and uploaded. 
+The report should be written assuming that the reader is not familiar with the project or the data. 
+The report must include the RMSE generated. 
+The report must include at least the following sections:
+
+
+# Introduction
+## describes the dataset 
+## summarizes the goal of the project 
+## key steps that were performed
+
+# Methods and analysis
+## explains the process and techniques used
+### data cleaning, 
+### data exploration 
+### visualization, 
+## insights gained, 
+## modeling approach
+
+# Results
+## presents the modeling results 
+## discusses the model performance
+
+# Conclusion
+## gives a brief summary of the report
+## its limitations 
+## future work
