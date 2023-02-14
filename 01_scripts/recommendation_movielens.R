@@ -87,12 +87,22 @@ edx %>%
   # gets the top 3
   head(.,3)
 
-## Rating with most selection ----
+# Data cleaning ----
+
+# looking at the data
+head(edx)
+
+# title contains the year
+# genre is grouped and separated by |
+
+edx_clean <- edx %>% 
+  # parses the timestamp to date and time format
+  mutate(timestamp = lubridate::as_datetime(timestamp))
+
+# confirming that the timestamp parsing worked
+summary(edx_clean$timestamp)
 
 
-
-# Methods and analysis
-## explains the process and techniques used
 ### data cleaning, 
 ### data exploration 
 ### visualization, 
