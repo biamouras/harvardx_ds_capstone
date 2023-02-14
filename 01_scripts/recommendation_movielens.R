@@ -22,19 +22,23 @@ dir_wd <- here::here()
 # source(file.path(dir_wd, '01_scripts', 'edx_setup.R'))
 
 # data directory
-dir_data <- file.path(dir_wd, '00_data')
+dir_data <- file.path(dir_wd, '00_data', 'movielens')
+# create folder if it doesn't exist
+dir.create(dir_data, showWarnings = FALSE)
 
-## detect if data_dir has already the data files ----
+## detect if data_dir has already the data files and download it ----
 
-#
+if(length(list.files(dir_data, '.rds')) == 0){
+  download.file("https://www.dropbox.com/s/4t4w48ut2gu8dn6/edx.rds?dl=1", 
+                file.path(dir_data, "edx.rds"), mode = 'wb')
+  
+  download.file("https://www.dropbox.com/s/c4jzznttgc01sdb/final_holdout_test.rds?dl=1", 
+                file.path(dir_data, "final_holdout_test.rds"), mode = 'wb')
+}
 
-download.file("https://www.dropbox.com/s/4t4w48ut2gu8dn6/edx.rds?dl=1", 
-              file.path(dir_data, "edx.rds"), mode = 'wb')
+## read files ----
+edx <- readRDS(file.path(dir_data, "edx.rds"))
 
-download.file("https://www.dropbox.com/s/c4jzznttgc01sdb/final_holdout_test.rds?dl=1", 
-              file.path(dir_data, "final_holdout_test.rds"), mode = 'wb')
+final_holdout_test <- readRDS(file.path(dir_data, "final_holdout_test.rds"))
 
-edx <- readRDS("00_data/edx.rds")
-
-final_holdout_test <- readRDS("00_data/final_holdout_test.rds")
-
+# 
