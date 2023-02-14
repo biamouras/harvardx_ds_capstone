@@ -41,7 +41,7 @@ edx <- readRDS(file.path(dir_data, "edx.rds"))
 
 final_holdout_test <- readRDS(file.path(dir_data, "final_holdout_test.rds"))
 
-# Exploring data ----
+# Exploring data: Quiz analysis ----
 
 # dimensions
 dim(edx)
