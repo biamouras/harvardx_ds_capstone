@@ -41,19 +41,13 @@ edx <- readRDS(file.path(dir_data, "edx.rds"))
 
 final_holdout_test <- readRDS(file.path(dir_data, "final_holdout_test.rds"))
 
-# Exploring data: Quiz analysis ----
+# Dataset description ----
 
-# dimensions
+# dimensions - rows and columns
 dim(edx)
 
 # columns' names
 colnames(edx)
-
-# how many zeros as rating
-sum(edx$rating == 0)
-
-# how many threes as rating
-sum(edx$rating == 3)
 
 # how many movies
 length(unique(edx$movieId))
@@ -61,7 +55,16 @@ length(unique(edx$movieId))
 # how many users 
 length(unique(edx$userId))
 
-## how many of ratings for each genre ----
+## Ratings summary ----
+
+edx %>% 
+  # counts per grade of rating the # of times that it was selected
+  count(rating) %>% 
+  # orders by descendent number of selection
+  arrange(desc(n))
+
+### How many of ratings for each genre ----
+# working with str_detect because the genre column is not yet split
 
 # drama
 sum(str_detect(edx$genres,'Drama'))
@@ -85,9 +88,22 @@ edx %>%
   head(.,3)
 
 ## Rating with most selection ----
-edx %>% 
-  # counts per grade of rating the # of times that it was selected
-  count(rating) %>% 
-  # orders by descendent number of selection
-  arrange(desc(n))
 
+
+
+# Methods and analysis
+## explains the process and techniques used
+### data cleaning, 
+### data exploration 
+### visualization, 
+## insights gained, 
+## modeling approach
+
+# Results
+## presents the modeling results 
+## discusses the model performance
+
+# Conclusion
+## gives a brief summary of the report
+## its limitations 
+## future work
